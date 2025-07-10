@@ -18,7 +18,6 @@ public class PedirTazaDeCambio {
         try {
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(direccion);
             return gson.fromJson(response.body(),Cambio.class);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -40,4 +40,4 @@ Conversor de Monedas es una aplicación de consola desarrollada en Java que perm
 
 ## :camera: Capturas de pantalla
 
-> Como es una aplicación de consola, puedes capturar y mostrar ejemplos del terminal si lo deseas, como:
+>
