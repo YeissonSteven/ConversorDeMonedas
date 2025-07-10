@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URI;
@@ -6,7 +8,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class PedirTazaDeCambio {
-    public String extraerTazaDeCambio(String monedaInicial, String monedaACambiar) {
+    public Cambio extraerTazaDeCambio(String monedaInicial, String monedaACambiar) {
+        Gson gson = new Gson();
         String direccion = "https://v6.exchangerate-api.com/v6/f00457fafc980a11125d03ee/pair/"+ monedaInicial + "/" +  monedaACambiar;
 
         HttpClient client = HttpClient.newHttpClient();
@@ -15,7 +18,8 @@ public class PedirTazaDeCambio {
         try {
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-            return  response.body();
+            System.out.println(direccion);
+            return gson.fromJson(response.body(),Cambio.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
